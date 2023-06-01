@@ -15,10 +15,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
     $position = $_POST['position'];
     $address = $_POST['address'];
-
+    $hash = md5($password);
     // Thêm người dùng vào cơ sở dữ liệu
     $sql = "INSERT INTO employee (username, email, birthdate, gender, password, position, address) 
-    VALUES ('$name', '$email', '$birth', '$gender', '$password', '$position', '$address')";
+    VALUES ('$name', '$email', '$birth', '$gender', '$hash', '$position', '$address')";
     $result = mysqli_query($conn, $sql);
 
     if ($result) {

@@ -29,9 +29,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
     $pass = $_POST['pass'];
     $pos = $_POST['pos'];
     $dc = $_POST['dc'];
+    $hash = md5($pass);
 
     // Cập nhật thông tin người dùng trong cơ sở dữ liệu
-    $sql = "UPDATE employee SET username='$name', email='$email', birthdate='$birth', gender='$gt', password='$pass', position='$pos', address='$dc' WHERE id = $id";
+    $sql = "UPDATE employee SET username='$name', email='$email', birthdate='$birth', gender='$gt', password='$hash', position='$pos', address='$dc' WHERE id = $id";
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
